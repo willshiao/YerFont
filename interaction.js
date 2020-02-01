@@ -60,7 +60,7 @@ window.onload = function () {
       currentLtrEl.innerHTML = targetLetters[++currentIdx]
       paper.project.activeLayer.removeChildren();
       if (currentIdx >= targetLetters.length){
-        document.getElementById('prompt').innerHTML = "Please click 'Select Font'";
+        document.getElementById('prompt').innerHTML = "Please click 'Create Font'";
         document.getElementById('submit').disabled = true;
         document.getElementById('imageView').style.background = "none";
         clear.disabled = true;
