@@ -13,6 +13,7 @@
 
 #prompt{
   font-family: 'Raleway';
+  margin-top:20px
 }
 
 .header-txt { 
@@ -79,7 +80,10 @@
   color: white;
 }  
 
-
+#create-btn{
+  background-color: #7ed682;
+  width: 175px;
+}
 
 
 #submit:hover {
@@ -102,9 +106,11 @@
 }
 #submit{
   margin: 0 25%;
+  width: 100px;
 }
 #clear{
   margin-left: 25%;
+  width: 100px;
 }
 
 .credits{
