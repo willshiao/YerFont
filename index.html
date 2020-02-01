@@ -5,43 +5,42 @@
     <title>YerFont</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <style type="text/css">
-      #container { position: relative; }
-      #imageView { border: 1px solid #000; }
-    </style>
   </head>
   <body>
 
 
     <div class="container">
+      <div class="row">
+        <div class="col">
+          <form action="#" id="ltr-form">
+            <h1 id="prompt">Write the letter "<span id="current-ltr"></span>"</h1>
+            <div id="container" class="container">
+              <canvas id="imageView">
+                <p>Unfortunately, your browser is currently unsupported by our web
+                application.  We are sorry for the inconvenience. Please use one of the
+                supported browsers listed below, or draw the image you want using an
+                offline tool.</p>
+                <p>Supported browsers: <a href="http://www.opera.com">Opera</a>, <a
+                  href="http://www.mozilla.com">Firefox</a>, <a
+                  href="http://www.apple.com/safari">Safari</a>, and <a
+                  href="http://www.konqueror.org">Konqueror</a>.</p>
+              </canvas>
+            
+              <div class="buttonItems">
+                <button id="clear" type="reset" class="btn btn-danger">Clear</button>
+                <button id="submit" type="submit" class="btn btn-primary">Submit/Next</button>
+                <br>
+                <button id="create-btn" class="btn btn-warning">Create Font</button>
+              </div>   
+            </div>
 
-      <form action="#" id="ltr-form">
-        <h1>Write the letter "<span id="current-ltr"></span>"</h1>
-        <div id="container">
-          <canvas id="imageView" height=500 width=500">
-            <p>Unfortunately, your browser is currently unsupported by our web
-            application.  We are sorry for the inconvenience. Please use one of the
-            supported browsers listed below, or draw the image you want using an
-            offline tool.</p>
-            <p>Supported browsers: <a href="http://www.opera.com">Opera</a>, <a
-              href="http://www.mozilla.com">Firefox</a>, <a
-              href="http://www.apple.com/safari">Safari</a>, and <a
-              href="http://www.konqueror.org">Konqueror</a>.</p>
-          </canvas>
-        
+          </form>
+          </div>
         </div>
-        <button id="clear" type="reset" class="btn btn-danger">Clear</button>
-        <button id="submit" type="submit" class="btn btn-primary">Submit/Next</button>
-        <button id="create-btn" class="btn btn-warning">Create Font</button>
-      </form>
+      </div>
 
 
-      
-
-    </div>
-    <!-- <script type="text/javascript" src="require.js"></script> -->
-    <!-- <script type="text/javascript" src="canvas2svg.js"></script> -->
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-full.min.js" integrity="sha256-xT9jNx8tzepeeLwMeN985td1KYlkEOZJ/ReF9XMLoMU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="interaction.js"></script>
 
