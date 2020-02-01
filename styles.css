@@ -1,0 +1,20 @@
+
+#container .img{
+  
+  position: absolute;
+  z-index:1;
+  margin-top: 35px;
+  width: 300px;
+}
+
+#container{
+    background: transparent; 
+    position:relative; 
+}
+
+#imageView{
+ 
+    border: 1px solid #000;
+    position:relative;
+    z-index:20;
+}

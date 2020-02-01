@@ -2,7 +2,6 @@
 
 
 var ctx = new C2S(500,500);
-ctx.fillRect(100,100,100,100);
 let mySerializedSVG = ctx.getSerializedSvg(true); //true here, if you need to convert named to numbered entities.
 //If you really need to you can access the shadow inline SVG created by calling:
 let svg = ctx.getSvg();
@@ -58,6 +57,7 @@ if(window.addEventListener) {
       clear.addEventListener('click', ()=> {
         console.log("clear");
         context.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearCanvas();
       }, false);
 
       submit.addEventListener('click', ()=>{
