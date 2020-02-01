@@ -1,6 +1,5 @@
 
-#container .img{
-  
+#container .img{ 
   position: absolute;
   z-index:1;
   margin-top: 35px;
@@ -12,13 +11,6 @@
     position:relative; 
 }
 
-#imageView{
- 
-    border: 1px solid #000;
-    position:relative;
-    z-index:20;
-}
-
 
 #container{
     background: transparent; 
@@ -26,8 +18,8 @@
 }
 
 #imageView{
-    width: 50%;
-    height: 50%;
+    width: 500px;
+    height: 500px;
     border: 1px solid #000;
     position:relative;
     z-index:20;
@@ -37,6 +29,55 @@
     background-position: center;
 }
 
-#create-btn{
-  margin-top: 5px;
+
+#create-btn {
+  background-color: rgb(111, 138, 255); 
+  color: rgb(0, 52, 82); 
+  border: 2px solid rgb(0, 29, 124);
+  border-radius: 6px;
+  position: left;    
+  width: 200px;
+  height: 50px;    
 }
+
+#create-btn:hover {
+  background-color: solid rgb(0, 29, 124);
+  transition-duration: 0.3s;
+  color: white;
+}  
+
+
+
+
+#submit {
+  background-color: rgb(161, 236, 164); 
+  color: rgb(1, 80, 3); 
+  border: 2px solid #4CAF50;
+  border-radius: 6px;
+  width: 100px;
+  height: 50px;
+}
+
+#submit:hover {
+  background-color: #4CAF50;
+  transition-duration: 0.3s;
+  color: white;
+}
+
+#clear {
+  background-color: rgb(255, 164, 164); 
+  color: rgb(136, 0, 0); 
+  border: 2px solid rgb(255, 42, 42);
+  border-radius: 6px;
+  position: left;    
+  width: 100px;
+  height: 50px;    
+}
+
+#clear:hover {
+  background-color: solid rgb(255, 42, 42);
+  transition-duration: 0.3s;
+  color: white;
+}  
+
+
