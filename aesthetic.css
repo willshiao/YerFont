@@ -1,4 +1,4 @@
-h1 {
+h2 {
     margin: 0;
     padding: 20px 0;    
     color: #00539F;
@@ -31,23 +31,7 @@ head {
 .button1 {
     -webkit-transition-duration: 0.3s; /* Safari */
     transition-duration: 0.3s;
-}
-
-.button1:hover {
-    background-color: #4CAF50; /* Green */
-    color: white;
-}
-
-.button1:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  }
-
-.button2 {
-    -webkit-transition-duration: 0.3s; /* Safari */
-    transition-duration: 0.3s;
-}
-
-.button2:hover {
-    background-color: rgb(192, 69, 52); /* Red */
-    color: white;
+    position: absolute;
+    left: 100px;
+    top: 150px;
 }

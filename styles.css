@@ -1,0 +1,43 @@
+h2 {    
+    color: rgb(0, 159, 34);
+    text-shadow: 1px 1px 1px black;
+    font-family: verdana;
+    text-align: center;
+}
+
+html {
+    font-size: 100px; 
+    font-family: "Open Sans", sans-serif;
+    /* background-color: #000000; */
+    text-align: center; 
+}
+
+head {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #FF9500;
+    padding: 0 20px 20px 20px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+
+.center {
+    margin: auto;
+    width: 45%;
+    border: 0px solid rgb(138, 135, 135);
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  html body {
+    background-color: rgb(255, 255, 255);
+    }
+
+/* .button1 {
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    position: absolute;
+    left: 100px;
+    top: 150px;
+} */
