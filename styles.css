@@ -1,4 +1,46 @@
 
+.header-img{
+    background-image: url(https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1266&q=80);  
+    background-position: center;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 3px solid white;
+}
+
+#prompt{
+  font-family: 'Raleway';
+}
+
+.header-txt { 
+  text-shadow: 0.5px 0.5px #000000;
+  font-size: 2.5em;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  text-align: center;
+}
+
+.header-txt h1{
+  font-size:1.5em;
+}
+.header-txt hr{
+  
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+
+}
+
+/* canvas */
 #container .img{ 
   position: absolute;
   z-index:1;
@@ -18,6 +60,7 @@
 }
 
 #imageView{
+    font-family: 'Raleway';
     width: 500px;
     height: 500px;
     border: 1px solid #000;
@@ -30,54 +73,45 @@
 }
 
 
-#create-btn {
-  background-color: rgb(111, 138, 255); 
-  color: rgb(0, 52, 82); 
-  border: 2px solid rgb(0, 29, 124);
-  border-radius: 6px;
-  position: left;    
-  width: 200px;
-  height: 50px;    
-}
-
 #create-btn:hover {
-  background-color: solid rgb(0, 29, 124);
+  /* background-color: solid rgb(0, 29, 124); */
   transition-duration: 0.3s;
   color: white;
 }  
 
 
 
-
-#submit {
-  background-color: rgb(161, 236, 164); 
-  color: rgb(1, 80, 3); 
-  border: 2px solid #4CAF50;
-  border-radius: 6px;
-  width: 100px;
-  height: 50px;
-}
 
 #submit:hover {
-  background-color: #4CAF50;
+  /* background-color: #4CAF50; */
   transition-duration: 0.3s;
   color: white;
 }
 
-#clear {
-  background-color: rgb(255, 164, 164); 
-  color: rgb(136, 0, 0); 
-  border: 2px solid rgb(255, 42, 42);
-  border-radius: 6px;
-  position: left;    
-  width: 100px;
-  height: 50px;    
-}
+
 
 #clear:hover {
-  background-color: solid rgb(255, 42, 42);
+  /* background-color: solid rgb(255, 42, 42); */
   transition-duration: 0.3s;
   color: white;
 }  
 
 
+.canva{
+  text-align: center;
+}
+#submit{
+  margin: 0 25%;
+}
+#clear{
+  margin-left: 25%;
+}
+
+.credits{
+  margin-top: 40px;
+  padding: 5px;
+  font-family: 'Raleway';
+  background-color: black;
+  color: white;
+  text-align: center;
+}
