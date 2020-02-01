@@ -12,6 +12,7 @@
 var drawingMap = {} // make global so we can inspect it
 
 window.onload = function () {
+
   const API_URL = 'http://localhost:5000/svg2font';
   var currentIdx = 0;
   const targetLetters = 'abcdefghijklmnopqrstuvwxyz';

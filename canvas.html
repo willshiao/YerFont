@@ -4,16 +4,28 @@
   <link rel="icon" href="3a5350032f7297c9.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 
-     <div class="container">
+
+<div class="header-img"></div>
+
+<div class="header-txt">
+  <h1>YerFont</h1>
+  <p>Create your own custom fonts and use it anywhere!</p>
+  <hr>
+  
+</div>
+
+
+     <div class="container canva">
       <div class="row">
-        <div class="col-6">
+        <div class="col">
           <form action="#" id="ltr-form">
-            <h1 id="prompt">Write the letter "<span id="current-ltr"></span>", then press Next</h1>
+            <h1 id="prompt">Write the letter "<span id="current-ltr"></span>", then press 'Next'</h1>
             <div id="container" class="container">
               <canvas id="imageView">
                 <p>Unfortunately, your browser is currently unsupported by our web
@@ -26,25 +38,24 @@
                   href="http://www.konqueror.org">Konqueror</a>.</p>
               </canvas>
             
-              <div class="buttonItems">
-                <button id="clear" type="reset" class="btn btn-danger">Clear</button>
-                <button id="submit" type="submit" class="btn btn-primary">Next</button>
+              <div class="buttonItems" style="margin-top:15px">
+                <button id="clear" type="reset" class="btn btn-lg btn-danger">Clear</button>
+                <button id="submit" type="submit" class="btn btn-lg btn-primary">Next</button>
                 <br>
-                <button id="create-btn" class="btn btn-warning">Create Font</button>
+                <button id="create-btn" class="btn btn-lg btn-success ">Create Font</button>
               </div>   
              </form>
           </div>
-          <p>Please Provide Your Current E-Mail Address</p>
-          <form>
-            &nbsp;<input type="email">
-            <button class="button button4" onclick="emailFont()">Email yerfont!</button>
-          </form>
+        
            
 
           </div>
         </div>
       </div>    
 
+  <div class="credits">
+  <p>Created with &#128150 during HackUCI2020</p>
+  </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-core.js"></script>
     <script type="text/javascript" src="fileSaver.js"></script>
     <script type="text/javascript" src="interaction.js"></script>     
