@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response, send_from_directory
 import os
 import random
 from os import path
@@ -43,7 +43,8 @@ def handle_svg():
 
 @app.route('/svg2font', methods=['POST'])
 def svg2font():
-    dname = f'fontdata-{random.randint(0, 10**10)}'
+    font_id = random.randint(0, 10**10)
+    dname = f'fontdata-{font_id}'
     os.mkdir(dname)
     data = request.json
     print('Got data: ', data)
@@ -62,5 +63,15 @@ def svg2font():
         except Exception as err:
             print('Caught error: ', err)
     font.generate(path.join(dname, 'testfont.ttf'))
-    os.rmdir(dname)
-    return ''
+    # os.rmdir(dname)
+    return {
+        'fontId': font_id
+    }
+
+@app.route('/font/<string:font_id>.ttf', methods=['GET'])
+def getFont(font_id):
+    dname = f'fontdata-{font_id}'
+    # with open(path.join(dname, 'testfont.ttf'), 'rb') as f:
+    #     data = f.read()
+    # return Response(data, mimetype='application/octet-stream')
+    return send_from_directory(dname, 'testfont.ttf', as_attachment=True)
