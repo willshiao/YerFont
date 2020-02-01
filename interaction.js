@@ -19,7 +19,7 @@ window.onload = function () {
   var drawPath;
 
   // canvas variables
-  var canvas, clear, submit, context, tool;
+  var canvas, clear, submit, context;
   // svg variables
   // var svg, mySerializedSVG;
   function init() {
