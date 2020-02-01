@@ -18,3 +18,19 @@
     position:relative;
     z-index:20;
 }
+
+
+#container{
+    background: transparent; 
+    position:relative; 
+}
+
+#imageView{
+    border: 1px solid #000;
+    position:relative;
+    z-index:20;
+    background-repeat: no-repeat; 
+    background-size: 50%;
+    background-image: url('lines.svg');  background-repeat: no-repeat;
+    background-position: center;
+}
