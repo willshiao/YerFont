@@ -11,10 +11,11 @@
 // Keep everything in anonymous function, called on window load.
 var drawingMap = {} // make global so we can inspect it
 
+paper.install(window)
 window.onload = function () {
-  const API_URL = 'http://localhost:5000/svg2font'
+  const API_URL = 'http://169.234.82.7:5000/svg2font'
   var currentIdx = 0
-  const targetLetters = 'abcdefghijklmnopqrstuvwxyz'
+  const targetLetters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=+!?()[]~`\'@#$^&'
   const currentLtrEl = document.getElementById('current-ltr')
   var drawPath;
 
@@ -32,12 +33,13 @@ window.onload = function () {
     const mainForm = document.getElementById('ltr-form')
 
     // Get the 2D canvas context.
-    context = canvas.getContext('2d');
+    // context = canvas.getContext('2d');
 
-    paper.setup(canvas);
+    // paper.setup(canvas);
     paper.view.onMouseDown = function(evt) {
       myPath = new paper.Path();
       myPath.strokeColor = 'black';
+      myPath.strokeWidth = 10;
     }
     paper.view.onMouseDrag = function (evt) {
       myPath.add(evt.point);
@@ -73,9 +75,10 @@ window.onload = function () {
         method: "POST",
         body: JSON.stringify(drawingMap)
       })
-        .then(res => res.json)
+        .then(res => res.json())
         .then(data => {
           console.log('Got: ', data)
+          alert('Your ID is ' + data.fontId)
         })
     })
   }
