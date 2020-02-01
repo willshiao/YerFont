@@ -1,3 +1,12 @@
+// var FileSaver = new FileSaver;
+
+
+var ctx = new C2S(500,500);
+ctx.fillRect(100,100,100,100);
+let mySerializedSVG = ctx.getSerializedSvg(true); //true here, if you need to convert named to numbered entities.
+//If you really need to you can access the shadow inline SVG created by calling:
+let svg = ctx.getSvg();
+// console.log(svg);
 
 
 /* © 2009 ROBO Design
@@ -10,7 +19,7 @@ if(window.addEventListener) {
     // canvas variables
     var canvas, clear, submit, context, tool;
     // svg variables
-    var svg, mySerializedSVG;
+    // var svg, mySerializedSVG;
     function init () {
       // Find the canvas element.
       canvas = document.getElementById('imageView');
@@ -28,6 +37,7 @@ if(window.addEventListener) {
   
       // Get the 2D canvas context.
       context = canvas.getContext('2d');
+      // ctx = canvas.getContext('2d');
       if (!context) {
         alert('Error: failed to getContext!');
         return;
@@ -52,10 +62,10 @@ if(window.addEventListener) {
 
       submit.addEventListener('click', ()=>{
         console.log("submit");
-        this.mySerializedSVG = canvas.getSerializedSvg(); //true here, if you need to convert named to numbered entities.
+        console.log(svg);
+        // var blob = new Blob([svg], {type: "text/plain;charset=utf-8"});
+        // saveAs(blob, "letter.svg");
 
-        //If you really need to you can access the shadow inline SVG created by calling:
-        this.svg = canvas.getSvg();
       }, false);
     }
   
@@ -68,8 +78,11 @@ if(window.addEventListener) {
       // This is called when you start holding down the mouse button.
       // This starts the pencil drawing.
       this.mousedown = function (ev) {
+          
           context.beginPath();
           context.moveTo(ev._x, ev._y);
+          ctx.beginPath();
+          ctx.moveTo(ev._x, ev._y);
           tool.started = true;
       };
   
@@ -80,6 +93,8 @@ if(window.addEventListener) {
         if (tool.started) {
           context.lineTo(ev._x, ev._y);
           context.stroke();
+          ctx.lineTo(ev._x, ev._y);
+          ctx.stroke();
         }
       };
   
@@ -91,25 +106,7 @@ if(window.addEventListener) {
         }
       };
 
-      this.touchstart = function (ev) {
-        context.beginPath();
-        context.moveTo(ev._x, ev._y);
-        tool.started = true;
-    };
   
-      this.touchmove = function (ev) {
-        if (tool.started) {
-          context.lineTo(ev._x, ev._y);
-          context.stroke();
-        }
-      };
-    
-      this.touchend = function (ev) {
-        if (tool.started) {
-          tool.mousemove(ev);
-          tool.started = false;
-        }
-      };
 
     }
 
