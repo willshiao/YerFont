@@ -1,4 +1,5 @@
 // var FileSaver = require('file-saver');
+// let fs = require('fs');
 
 /*!!
  *  Canvas 2 Svg v1.0.19

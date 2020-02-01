@@ -12,24 +12,23 @@
 var drawingMap = {} // make global so we can inspect it
 
 window.onload = function () {
-  const API_URL = 'http://localhost:5000/svg2font'
-  var currentIdx = 0
-  const targetLetters = 'abcdefghijklmnopqrstuvwxyz'
-  const currentLtrEl = document.getElementById('current-ltr')
-  var drawPath;
+  const API_URL = 'http://localhost:5000/svg2font';
+  var currentIdx = 0;
+  const targetLetters = 'abcdefghijklmnopqrstuvwxyz';
+  const currentLtrEl = document.getElementById('current-ltr');
+  
 
   // canvas variables
-  var canvas, clear, submit, context;
-  // svg variables
-  // var svg, mySerializedSVG;
+  var canvas, clear;
+
   function init() {
-    currentLtrEl.innerHTML = targetLetters[currentIdx]
+    currentLtrEl.innerHTML = targetLetters[currentIdx];
     canvas = document.getElementById('imageView');
-    paper.setup(canvas)
+    paper.setup(canvas);
     clear = document.getElementById('clear');
     submit = document.getElementById('submit');
     const createBtn = document.getElementById('create-btn');
-    const mainForm = document.getElementById('ltr-form')
+    const mainForm = document.getElementById('ltr-form');
 
     // Get the 2D canvas context.
     context = canvas.getContext('2d');
