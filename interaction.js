@@ -2,7 +2,7 @@
 // user selected fonts for merging/randomizing
 var selectedFonts = []; 
 // presetFonts that we made, but users can add their fonts to the list
-var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}, {name:'raleway', fileName:'.'}];
+var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}, {name:'raleway', fileName:'.'}, {name: 'ai', fileName: "https://font-api.wls.ai/font/88888888.ttf"}];
     
 var prevInput;
 
@@ -191,7 +191,7 @@ window.onload = function () {
   }
 
   var fonts = document.querySelectorAll('.fontChoices');
-  for (let i = 0; (i < presetFonts.length && i < fonts.length); i++){
+  for (let i = 0; (i < presetFonts.length); i++){
     fonts[i].style.fontFamily = presetFonts[i].name;
     console.log(fonts[i].style.fontFamily);
   }
