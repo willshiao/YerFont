@@ -18,20 +18,33 @@ window.onload = function () {
   const targetLetters = 'abcdefghijklmnopqrstuvwxyz';
   const currentLtrEl = document.getElementById('current-ltr');
   
-  var presetFonts = [{name:'testfont', fileName:'testfont (1).ttf'}];
-  console.log('url(' + '"' + presetFonts[0].fileName + '")"');
-  let new_font = new FontFace(presetFonts[0].name, 'url(' + '"' + presetFonts[0].fileName + '")');
-  new_font.load().then(function(loaded_face) {
-    // use font here
-    document.fonts.add(loaded_face);
-}).catch(function(error) {
+  //preset fonts, user can add their own to this.
+  var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}];
+  const previewPhrase = 'the quick brown fox jumps over the lazy dog';
+  
 
-});
-  const previewPhrase = 'the quick brown fox jumps over the lazy dog'
+  
+  for (let i = 0; i < presetFonts.length; i++) {
+      let new_font = new FontFace(presetFonts[i].name, 'url(' + '"' + presetFonts[i].fileName + '")');
+      new_font.load().then(function(loaded_face) {
+        // use font here
+        document.fonts.add(loaded_face);
+    }).catch(function(error) {
+    });
+  }
+
   var fonts = document.querySelectorAll('.fontChoices');
-  fonts[0].style.fontFamily = 'testfont';
-  fonts[0].innerHTML = '<input type="checkbox" class="list-group-item" style="float: left;">'+previewPhrase;
-  console.log(fonts[0].fontFamily);
+  for (let i = 0; i < fonts.length || i < presetFonts.length; i++){
+    fonts[i].style.fontFamily = presetFonts[i].name;
+    fonts[i].innerHTML = '<input type="checkbox" class="list-group-item" style="float: left;">'+previewPhrase;
+  }
+  
+  
+ 
+  
+  
+  
+  // console.log(fonts[0].fontFamily);
   // canvas variables
   var canvas, clear;
 
