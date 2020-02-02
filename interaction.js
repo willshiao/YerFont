@@ -1,8 +1,9 @@
 
-
+// user selected fonts for merging/randomizing
 var selectedFonts = []; 
+// presetFonts that we made, but users can add their fonts to the list
 var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}];
-  
+    
 
 
 // Keep everything in anonymous function, called on window load.
@@ -10,34 +11,11 @@ var drawingMap = {} // make global so we can inspect it
 
 window.onload = function () {
 
-  const API_URL = 'http://localhost:5000/svg2font';
+  const API_URL = 'https://font-api.wls.ai/svg2font';
   var currentIdx = 0;
   const targetLetters = 'abcdefghijklmnopqrstuvwxyz';
   const currentLtrEl = document.getElementById('current-ltr');
   
-  //preset fonts, user can add their own to this.
- 
-
-  
-  // moved to oninit()
-  // for (let i = 0; i < presetFonts.length; i++) {
-  //     let new_font = new FontFace(presetFonts[i].name, 'url(' + '"' + presetFonts[i].fileName + '")');
-  //     new_font.load().then(function(loaded_face) {
-  //       // use font here
-  //       document.fonts.add(loaded_face);
-  //   }).catch(function(error) {
-  //   });
-  // }
-
-  // var fonts = document.querySelectorAll('.fontChoices');
-  // for (let i = 0; (i < presetFonts.length && i < fonts.length); i++){
-  //   fonts[i].style.fontFamily = presetFonts[i].name;
-  //   fonts[i].innerHTML = '<input type="checkbox" class="list-group-item customFont" style="float: left;">'+previewPhrase;
-  // }
-  
-  // user selected custom fonts, hold the name of the font
-  
-
   var checkedBoxes = document.getElementsByClassName('customFont');
 
   for (i = 0; (i < checkedBoxes.length && i < presetFonts.length); i++){
@@ -59,7 +37,46 @@ window.onload = function () {
     }
   }
   
- 
+  function loadFont(newURL) {
+    // var newURL = "https://font.wls.ai/fonts/${num}.ttf"; //url from backend
+    
+    //strip numbers using regex
+    var re = /[0-9]/g;
+  
+    //turn the stripped numbers to string
+    //create the new font for our document
+      var newFont = newURL.match(re).join('').toString();
+  
+      var face = new FontFace(newFont, 'url(' + newURL + ')');
+      return face
+        .load()
+        .then(function(loaded_face) {
+          document.fonts.add(loaded_face);
+          console.log(loaded_face);
+          presetFonts.push({name: newURL.match(re).join('').toString(), fileName: newURL});
+          // console.log(fonts[0])
+        })
+        .then(function(){
+          var ul = document.getElementById("lists");
+          var newLi = document.createElement("li");
+          newLi.appendChild(document.createTextNode(""));
+          newLi.setAttribute("class","list-group-item");
+          newLi.innerHTML='<input type="checkbox" class="list-group-item customFont" style="float: left;"><span class="fontChoices">the quick brown fox jumps over the lazy dog</span></li>';
+          newLi.style.fontFamily = '"'+newFont+'"';
+          ul.appendChild(newLi);
+          console.log(presetFonts[this.presetFonts.length-1].name);
+      
+          console.log(newLi.style);
+        })
+        .catch(function(error) {
+          // error occurred
+        });
+    
+   
+
+
+  
+  }
  
   // canvas variables
   var canvas, clear;
@@ -73,13 +90,10 @@ window.onload = function () {
     const createBtn = document.getElementById('create-btn');
     const mainForm = document.getElementById('ltr-form');
 
-    // Get the 2D canvas context.
-    context = canvas.getContext('2d');
-
-    paper.setup(canvas);
     paper.view.onMouseDown = function(evt) {
       myPath = new paper.Path();
       myPath.strokeColor = 'black';
+      myPath.strokeWidth = 10;
     }
     paper.view.onMouseDrag = function (evt) {
       myPath.add(evt.point);
@@ -90,9 +104,7 @@ window.onload = function () {
     //clear canvas
     clear.addEventListener('click', () => {
       console.log("clear");
-      // context.clearRect(0, 0, canvas.width, canvas.height);
       paper.project.activeLayer.removeChildren();
-      // context.clearCanvas();
     }, false);
       
     mainForm.addEventListener('submit', (evt) => {
@@ -120,11 +132,16 @@ window.onload = function () {
         method: "POST",
         body: JSON.stringify(drawingMap)
       })
-        .then(res => res.json)
+        .then(res => res.json())
         .then(data => {
-          console.log('Got: ', data)
+          console.log('Got: ', data);
+          alert('your id is '+ data.fontId);
+          let newURL = "https://font-api.wls.ai/font/" + data.fontId + '.ttf';
+          loadFont(newURL);
         })
-    })
+     
+      }
+    )
 
     for (let i = 0; i < presetFonts.length; i++) {
       let new_font = new FontFace(presetFonts[i].name, 'url(' + '"' + presetFonts[i].fileName + '")');
@@ -138,6 +155,7 @@ window.onload = function () {
   var fonts = document.querySelectorAll('.fontChoices');
   for (let i = 0; (i < presetFonts.length && i < fonts.length); i++){
     fonts[i].style.fontFamily = presetFonts[i].name;
+    console.log(fonts[i].style.fontFamily);
   }
 
 
