@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="3a5350032f7297c9.png">
+  <title>YerFont</title>
+  <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
@@ -22,6 +23,7 @@
 
 
      <div class="container canva">
+
       <div class="row">
         <div class="col">
           <form action="#" id="ltr-form">
@@ -42,20 +44,46 @@
                 <button id="clear" type="reset" class="btn btn-lg btn-outline-danger">Clear</button>
                 <button id="submit" type="submit" class="btn btn-lg btn-outline-primary">Next</button>
                 <br>
-                <button id="create-btn" class="btn btn-lg btn-success ">Create Font</button>
+                <button id="create-btn" class="btn btn-lg btn-success">Create Font</button>
               </div>   
              </form>
+           </div>
           </div>
-        
-           
 
+      <div class="container font">
+        <h1>Or try premade fonts and mix them up!</h1>
+        <h5>Choose up to 5 fonts</h5>
+        <div class="row">
+          <div class="col-7">
+            <ul class="list-group">
+            
+                <li class="list-group-item fontChoices"><input type="checkbox list-group-item" style="float: left">Font 1</li>
+                <li class="list-group-item fontChoices"><input type="checkbox" style="float: left">Font 2</li>
+                <li class="list-group-item fontChoices"><input type="checkbox" style="float: left">Font 3 a b c d</li>
+                <li class="list-group-item fontChoices"><input type="checkbox" style="float: left">Font 4</li>
+                <li class="list-group-item fontChoices"><input type="checkbox" style="float: left">Font 5</li>
+              
+            </ul>
           </div>
-        </div>
-      </div>    
+          <div class="col-5">
+            <div class="card">
+              <div class="card-body">
+                <p>This is sample text of the fonts you chose!</p>
+                <p>The quick brown fox jumps over the lazy dog.</p>
+                <p>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+                <p>1 2 3 4 5 6 7 8 9 0</p>
+              </div>
+            </div>
+        </div>  
+      </div> 
+       </div>
+    </div>
+      </div>
 
   <div class="credits">
-  <p>Created with &#128150 during HackUCI2020</p>
+    <p>Created with &#128150 during HackUCI2020</p>
   </div>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.2/paper-core.js"></script>
     <script type="text/javascript" src="fileSaver.js"></script>
     <script type="text/javascript" src="interaction.js"></script>     

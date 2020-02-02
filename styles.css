@@ -102,22 +102,30 @@
 
 
 .canva{
+  font-family: 'Raleway';
   text-align: center;
 }
 #submit{
+  font-family: 'Raleway';
   margin: 0 25%;
   width: 100px;
 }
 #clear{
+  font-family: 'Raleway';
   margin-left: 25%;
   width: 100px;
 }
 
-.credits{
+.credits{ 
   margin-top: 40px;
   padding: 5px;
   font-family: 'Raleway';
   background-color: black;
   color: white;
   text-align: center;
+}
+
+.font{
+  font-family: 'Raleway';
+  margin-top:30px;
 }
