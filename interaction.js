@@ -2,7 +2,7 @@
 // user selected fonts for merging/randomizing
 var selectedFonts = []; 
 // presetFonts that we made, but users can add their fonts to the list
-var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}];
+var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}, {name:'raleway', fileName:'.'}];
     
 
 
@@ -157,8 +157,11 @@ window.onload = function () {
         .then(res => res.json())
         .then(data => {
           console.log('Got: ', data);
-          alert('your id is '+ data.fontId);
           let newURL = "https://font-api.wls.ai/font/" + data.fontId + '.ttf';
+
+         if(window.confirm("Download your font by pressing 'OK'!")){
+          window.location.href=newURL;
+         }
           loadFont(newURL);
         })
      
