@@ -49,14 +49,14 @@ window.onload = function () {
     //create the new font for our document
       var newFont = newURL.match(re).join('').toString();
   
-      var face = new FontFace(newFont, 'url(' + newURL + ')');
+      var face = new FontFace(`"${newFont}"`, 'url(' + newURL + ')');
       return face
         .load()
         .then(function(loaded_face) {
           document.fonts.add(loaded_face);
           console.log(loaded_face);
           presetFonts.push({name: newURL.match(re).join('').toString(), fileName: newURL});
-          console.log(presetFonts);
+          console.log('Added to present fonts: ', presetFonts);
         })
         .then(function(){
           var ul = document.getElementById("lists");
@@ -90,6 +90,7 @@ window.onload = function () {
           console.log(newLi.style);
         })
         .catch(function(error) {
+          console.error(error)
           // error occurred
         });
   
@@ -170,7 +171,8 @@ window.onload = function () {
          if(window.confirm("Download your font by pressing 'OK'!")){
           window.location.href=newURL;
          }
-          loadFont(newURL);
+          loadFont(newURL)
+            .then(() => { console.log('Done loading new font!') });
         })
      
       }
