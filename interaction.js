@@ -191,9 +191,20 @@ window.onload = function () {
     console.log(fonts[i].style.fontFamily);
   }
 
+
   const prefixReplaceRegex = /^[^<]+/gi;
   const NUM_FONTS = 4
   //const replaceRegex = /(?:^|\/span>)([^<>]+)(?:<span|$)/gi
+
+  const rawArea = document.getElementById('raw-area')
+  const outputArea = document.getElementById('output-area')
+  rawArea.addEventListener('input', (evt) => {
+    const content = rawArea.value
+    outputArea.innerHTML = content.split('').map(c => {
+      const randNum = Math.floor(Math.random() * selectedFonts.length)
+      return `<span style="font-family: ${selectedFonts[randNum]}">${c}</span>`
+    }).join('')
+  })
   demo.addEventListener("input", function(event) {
     const demoEl = document.getElementById('demo')
     if (prefixReplaceRegex.test(demoEl.innerHTML)) {
