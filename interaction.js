@@ -4,7 +4,7 @@ var selectedFonts = [];
 // presetFonts that we made, but users can add their fonts to the list
 var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}, {name:'raleway', fileName:'.'}];
     
-
+var prevInput;
 
 // Keep everything in anonymous function, called on window load.
 var drawingMap = {} // make global so we can inspect it
@@ -93,7 +93,8 @@ window.onload = function () {
           // error occurred
         });
     
-   
+
+        
 
 
   
@@ -183,6 +184,13 @@ window.onload = function () {
     console.log(fonts[i].style.fontFamily);
   }
 
+  
+  const replaceRegex = /(?:^|\/span>)([^<>]+)(?:<span|$)/gi
+  demo.addEventListener("input", function(event) {
+    let currentVal = this.innerHTML;
+    console.log(currentVal);
+    currentVal = currentVal.replace();
+  }, false);
   
 
   }
