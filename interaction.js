@@ -25,6 +25,7 @@ window.onload = function () {
           for (j = 0; j < checkedBoxes.length; j++){
             if (checkedBoxes[j] === this){
               selectedFonts.push(presetFonts[j].name);
+              demo.style.fontFamily = (presetFonts[j].name);
             }
           }
           console.log(selectedFonts);
@@ -54,7 +55,7 @@ window.onload = function () {
           document.fonts.add(loaded_face);
           console.log(loaded_face);
           presetFonts.push({name: newURL.match(re).join('').toString(), fileName: newURL});
-          // console.log(fonts[0])
+          console.log(presetFonts);
         })
         .then(function(){
           var ul = document.getElementById("lists");
@@ -64,8 +65,25 @@ window.onload = function () {
           newLi.innerHTML='<input type="checkbox" class="list-group-item customFont" style="float: left;"><span class="fontChoices">the quick brown fox jumps over the lazy dog</span></li>';
           newLi.style.fontFamily = '"'+newFont+'"';
           ul.appendChild(newLi);
+
+          //new listener
           console.log(presetFonts[this.presetFonts.length-1].name);
-      
+
+          var input = document.getElementsByTagName('input');
+          input[input.length-1].addEventListener('change', function(){
+            if (this.checked){
+                  selectedFonts.push(newLi.style.fontFamily);
+                  console.log(selectedFonts);
+            }
+            else {
+              for (i = 0; i < presetFonts.length; i++){
+                if (presetFonts[i].name == newURL.match(re).join('').toString()){
+                  selectedFonts.splice(selectedFonts.indexOf(presetFonts[i]), 1);
+                  console.log(selectedFonts);
+                }
+              }
+            }
+          }); 
           console.log(newLi.style);
         })
         .catch(function(error) {
@@ -87,6 +105,7 @@ window.onload = function () {
     paper.setup(canvas);
     clear = document.getElementById('clear');
     submit = document.getElementById('submit');
+    demo = document.getElementById('demo');
     const createBtn = document.getElementById('create-btn');
     const mainForm = document.getElementById('ltr-form');
 
@@ -158,7 +177,7 @@ window.onload = function () {
     console.log(fonts[i].style.fontFamily);
   }
 
-
+  
 
   }
 
