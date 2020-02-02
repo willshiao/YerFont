@@ -103,6 +103,18 @@ window.onload = function () {
   // canvas variables
   var canvas, clear;
 
+  function insertAfter(newNode, referenceNode) {
+      referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  }
+
+  function randomClass(numClasses) {
+    return `customfont-${Math.floor(Math.random() * numClasses)}` 
+  }
+  function randomSpan(contents, classes) {
+    const classNum = Math.floor(Math.random() * classes)
+    return `<span class="customfont-${classNum}">${contents}</span>`
+  }
+
   function init() {
     currentLtrEl.innerHTML = targetLetters[currentIdx];
     canvas = document.getElementById('imageView');
@@ -184,12 +196,62 @@ window.onload = function () {
     console.log(fonts[i].style.fontFamily);
   }
 
-  
-  const replaceRegex = /(?:^|\/span>)([^<>]+)(?:<span|$)/gi
+  const prefixReplaceRegex = /^[^<]+/gi;
+  const NUM_FONTS = 4
+  //const replaceRegex = /(?:^|\/span>)([^<>]+)(?:<span|$)/gi
   demo.addEventListener("input", function(event) {
-    let currentVal = this.innerHTML;
-    console.log(currentVal);
-    currentVal = currentVal.replace();
+    const demoEl = document.getElementById('demo')
+    if (prefixReplaceRegex.test(demoEl.innerHTML)) {
+      demoEl.innerHTML = demoEl.innerHTML.replace(prefixReplaceRegex, randomSpan('$&', NUM_FONTS))
+      const range = document.createRange();
+      const sel = window.getSelection();
+      range.setStart(demoEl.childNodes[demoEl.childNodes.length-1], 1);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    let newP = ""
+    elementList = this.querySelectorAll("span");
+    
+    // console.log(elementList.length)
+    // if (elementList.length == 0) {
+    //   console.log('Nothin found')
+    //   demoEl.innerText = ''
+    //   demoEl.innerHTML = '<span>a</span>'
+    //   return
+    // }
+    console.log(demoEl.innerText)
+    elementList.forEach(el => {
+      // console.log('Hwan Ji Kim', el)
+      //console.log( elementList[i].innerText);
+      let currentVal = el.innerText;
+      let lastEl = el
+      if (currentVal.length == 1) return;
+      el.innerText = currentVal.length > 0 ? currentVal[0] : ''
+      //console.log(currentVal);
+      for(let j=1;j<currentVal.length;j++) {
+        let newSpan = document.createElement("SPAN")
+        newSpan.className = randomClass(NUM_FONTS)
+        // newSpan.innerText = 
+        newSpan.appendChild(document.createTextNode(currentVal[j]));
+        insertAfter(newSpan, lastEl)
+        lastEl = newSpan
+        // newP.after(newSpan);
+        // newP = newSpan;
+      }
+      const range = document.createRange();
+      const sel = window.getSelection();
+      try {
+        range.setStart(lastEl, 1);
+      } catch(err) {}
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+      
+    })
+    
+    //console.log(newP)
+    //this.innerHTML = newP;
   }, false);
   
 
