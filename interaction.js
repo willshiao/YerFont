@@ -1,11 +1,8 @@
-// var FileSaver = new FileSaver;
 
 
-// var ctx = new C2S(500,500);
-// let mySerializedSVG = ctx.getSerializedSvg(true); //true here, if you need to convert named to numbered entities.
-// //If you really need to you can access the shadow inline SVG created by calling:
-// let svg = ctx.getSvg();
-// console.log(svg);
+var selectedFonts = []; 
+var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}];
+  
 
 
 // Keep everything in anonymous function, called on window load.
@@ -19,32 +16,51 @@ window.onload = function () {
   const currentLtrEl = document.getElementById('current-ltr');
   
   //preset fonts, user can add their own to this.
-  var presetFonts = [{name:'jihwan-font', fileName:'./fonts/5240232123.ttf'}, {name: 'carolyn-font', fileName: './fonts/704312777.ttf'}, {name:'paris-font', fileName:'./fonts/8357429178.ttf'}, {name:'will-font', fileName: './fonts/1225762287.ttf'}];
-  const previewPhrase = 'the quick brown fox jumps over the lazy dog';
-  
+ 
 
   
-  for (let i = 0; i < presetFonts.length; i++) {
-      let new_font = new FontFace(presetFonts[i].name, 'url(' + '"' + presetFonts[i].fileName + '")');
-      new_font.load().then(function(loaded_face) {
-        // use font here
-        document.fonts.add(loaded_face);
-    }).catch(function(error) {
-    });
-  }
+  // moved to oninit()
+  // for (let i = 0; i < presetFonts.length; i++) {
+  //     let new_font = new FontFace(presetFonts[i].name, 'url(' + '"' + presetFonts[i].fileName + '")');
+  //     new_font.load().then(function(loaded_face) {
+  //       // use font here
+  //       document.fonts.add(loaded_face);
+  //   }).catch(function(error) {
+  //   });
+  // }
 
-  var fonts = document.querySelectorAll('.fontChoices');
-  for (let i = 0; i < fonts.length || i < presetFonts.length; i++){
-    fonts[i].style.fontFamily = presetFonts[i].name;
-    fonts[i].innerHTML = '<input type="checkbox" class="list-group-item" style="float: left;">'+previewPhrase;
-  }
+  // var fonts = document.querySelectorAll('.fontChoices');
+  // for (let i = 0; (i < presetFonts.length && i < fonts.length); i++){
+  //   fonts[i].style.fontFamily = presetFonts[i].name;
+  //   fonts[i].innerHTML = '<input type="checkbox" class="list-group-item customFont" style="float: left;">'+previewPhrase;
+  // }
   
+  // user selected custom fonts, hold the name of the font
+  
+
+  var checkedBoxes = document.getElementsByClassName('customFont');
+
+  for (i = 0; (i < checkedBoxes.length && i < presetFonts.length); i++){
+    if (checkedBoxes[i].type === 'checkbox') {
+      checkedBoxes[i].addEventListener('change', function(){
+        if (this.checked){
+          for (j = 0; j < checkedBoxes.length; j++){
+            if (checkedBoxes[j] === this){
+              selectedFonts.push(presetFonts[j].name);
+            }
+          }
+          console.log(selectedFonts);
+        }
+        else {
+          selectedFonts.splice(selectedFonts.indexOf(presetFonts[i]), 1);
+          console.log(selectedFonts);
+        }
+      }); 
+    }
+  }
   
  
-  
-  
-  
-  // console.log(fonts[0].fontFamily);
+ 
   // canvas variables
   var canvas, clear;
 
@@ -109,6 +125,23 @@ window.onload = function () {
           console.log('Got: ', data)
         })
     })
+
+    for (let i = 0; i < presetFonts.length; i++) {
+      let new_font = new FontFace(presetFonts[i].name, 'url(' + '"' + presetFonts[i].fileName + '")');
+      new_font.load().then(function(loaded_face) {
+        // use font here
+        document.fonts.add(loaded_face);
+    }).catch(function(error) {
+    });
+  }
+
+  var fonts = document.querySelectorAll('.fontChoices');
+  for (let i = 0; (i < presetFonts.length && i < fonts.length); i++){
+    fonts[i].style.fontFamily = presetFonts[i].name;
+  }
+
+
+
   }
 
   init();
