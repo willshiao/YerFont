@@ -32,6 +32,7 @@ window.onload = function () {
         }
         else {
           selectedFonts.splice(selectedFonts.indexOf(presetFonts[i]), 1);
+          demo.style.fontFamily = 'Raleway';
           console.log(selectedFonts);
         }
       }); 
@@ -72,6 +73,7 @@ window.onload = function () {
           var input = document.getElementsByTagName('input');
           input[input.length-1].addEventListener('change', function(){
             if (this.checked){
+              demo.style.fontFamily = '"'+newFont+'"';
                   selectedFonts.push(newLi.style.fontFamily);
                   console.log(selectedFonts);
             }
@@ -79,6 +81,7 @@ window.onload = function () {
               for (i = 0; i < presetFonts.length; i++){
                 if (presetFonts[i].name == newURL.match(re).join('').toString()){
                   selectedFonts.splice(selectedFonts.indexOf(presetFonts[i]), 1);
+                  demo.style.fontFamily = 'Raleway';
                   console.log(selectedFonts);
                 }
               }
