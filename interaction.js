@@ -18,7 +18,20 @@ window.onload = function () {
   const targetLetters = 'abcdefghijklmnopqrstuvwxyz';
   const currentLtrEl = document.getElementById('current-ltr');
   
+  var presetFonts = [{name:'testfont', fileName:'testfont (1).ttf'}];
+  console.log('url(' + '"' + presetFonts[0].fileName + '")"');
+  let new_font = new FontFace(presetFonts[0].name, 'url(' + '"' + presetFonts[0].fileName + '")');
+  new_font.load().then(function(loaded_face) {
+    // use font here
+    document.fonts.add(loaded_face);
+}).catch(function(error) {
 
+});
+  const previewPhrase = 'the quick brown fox jumps over the lazy dog'
+  var fonts = document.querySelectorAll('.fontChoices');
+  fonts[0].style.fontFamily = 'testfont';
+  fonts[0].innerHTML = '<input type="checkbox" class="list-group-item" style="float: left;">'+previewPhrase;
+  console.log(fonts[0].fontFamily);
   // canvas variables
   var canvas, clear;
 
