@@ -49,7 +49,7 @@ window.onload = function () {
     //create the new font for our document
       var newFont = newURL.match(re).join('').toString();
   
-      var face = new FontFace(`"${newFont}"`, 'url(' + newURL + ')');
+      var face = new FontFace(`'${newFont}'`, 'url(' + newURL + ')');
       return face
         .load()
         .then(function(loaded_face) {
@@ -204,7 +204,12 @@ window.onload = function () {
     const content = rawArea.value
     outputArea.innerHTML = content.split('').map(c => {
       const randNum = Math.floor(Math.random() * selectedFonts.length)
-      return `<span style="font-family: ${selectedFonts[randNum]}">${c}</span>`
+      console.log('Using selectFonts: ', selectedFonts[randNum])
+      let fontName = selectedFonts[randNum].split('"').join('\'')
+      // if (fontName[0] === '"') fontName.slice(1, fontName.length - 1)
+      const toRet = `<span style="font-family: ${fontName}">${c}</span>`
+      console.log('WTF: ', toRet)
+      return toRet
     }).join('')
   })
   demo.addEventListener("input", function(event) {
